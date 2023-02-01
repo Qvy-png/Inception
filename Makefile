@@ -9,7 +9,6 @@ stop:
 	@ docker-compose -f srcs/docker-compose.yml down
 
 clean: stop
-	@ rm -rf ~/Desktop/inception
 
 prune: clean
 	@ docker system prune -f
