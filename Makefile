@@ -10,8 +10,7 @@ all:
 	sudo chmod 777 $(WORDPRESS)
 	sudo docker-compose -f $(YML) up -d --build
 
-re :
-	clean all
+re : clean all
 	
 stop:
 	sudo docker-compose -f $(YML) stop

@@ -1,6 +1,6 @@
 version: '3'
 
-# back-up in case
+# back-up
 
 volumes:
     wordpress:
