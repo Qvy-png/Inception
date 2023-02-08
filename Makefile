@@ -1,19 +1,27 @@
 NAME = inception
+YML = ./srcs/docker-compose.yml
+MARIADB = ./mariadb
+WORDPRESS = ./wordpress
 
-all: prune reload
+all:
+	sudo mkdir -p $(MARIADB)
+	sudo chmod 777 $(MARIADB)
+	sudo mkdir -p $(WORDPRESS)
+	sudo chmod 777 $(WORDPRESS)
+	sudo docker-compose -f $(YML) up -d --build
 
-linux:
-	@ echo "127.0.0.1 rdel-agu.42.fr" >> /etc/hosts
+re :
+	clean all
 	
 stop:
-	@ docker-compose -f srcs/docker-compose.yml down
+	sudo docker-compose -f $(YML) stop
 
-clean: stop
+clean:
+	sudo docker-compose -f $(YML) down -v
 
-prune: clean
-	@ docker system prune -f
+fclean: clean
+	sudo rm -rf $(MARIADB)
+	sudo rm -rf $(WORDPRESS)
+	sudo docker system prune -af
 
-reload: 
-	@ docker-compose -f srcs/docker-compose.yml up --build
-
-.PHONY: linux stop clean prune reload all
+.PHONY: all re stop clean fclean

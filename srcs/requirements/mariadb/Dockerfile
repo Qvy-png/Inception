@@ -6,8 +6,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 
 
 
-# COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
-COPY conf/conf.sh /tmp/configure.sh
+COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
+COPY tools/conf.sh /tmp/configure.sh
 
 ENTRYPOINT [ "sh", "/tmp/configure.sh" ]
 
