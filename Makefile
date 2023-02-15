@@ -1,6 +1,6 @@
 PATH_YML = ./srcs/docker-compose.yml
-MARIADB_PATH = /home/inception/data/mariadb
-WORDPRESS_PATH = /home/inception/data/wordpress
+MARIADB_PATH = /home/rdel-agu/data/mariadb
+WORDPRESS_PATH = /home/rdel-agu/data/wordpress
 
 all:
 	@ sudo mkdir -p $(MARIADB_PATH)
